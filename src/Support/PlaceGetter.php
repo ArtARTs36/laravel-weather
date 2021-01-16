@@ -9,6 +9,6 @@ class PlaceGetter
 {
     public function fromConfig(Driver $driver): Place
     {
-        return new Place(config('weather.default_place')[get_class($driver)]);
+        return new Place(value(config('weather.default_place')[get_class($driver)]));
     }
 }
