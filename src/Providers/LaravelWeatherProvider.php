@@ -4,6 +4,7 @@ namespace ArtARTs36\LaravelWeather\Providers;
 
 use ArtARTs36\LaravelWeather\Console\Commands\FetchWeatherCommand;
 use ArtARTs36\LaravelWeather\Services\WeatherFetcher;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelWeatherProvider extends ServiceProvider
@@ -17,6 +18,8 @@ class LaravelWeatherProvider extends ServiceProvider
             $this->commands([
                 FetchWeatherCommand::class,
             ]);
+
+            $this->registerFactories();
         }
 
         $this->registerWeatherFetcher();
@@ -25,5 +28,14 @@ class LaravelWeatherProvider extends ServiceProvider
     protected function registerWeatherFetcher(): void
     {
         $this->app->singleton(WeatherFetcher::class);
+    }
+
+    protected function registerFactories(): self
+    {
+        if ($this->app->runningInConsole()) {
+            $this->app->make(EloquentFactory::class)->load(__DIR__ . '/../../database/factories');
+        }
+
+        return $this;
     }
 }

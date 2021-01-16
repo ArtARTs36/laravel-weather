@@ -3,6 +3,7 @@
 namespace ArtARTs36\LaravelWeather\Repositories;
 
 use ArtARTs36\LaravelWeather\Models\Day;
+use Illuminate\Support\Collection;
 
 class DayRepository
 {
@@ -18,5 +19,13 @@ class DayRepository
         }
 
         return Day::query()->insert($values);
+    }
+
+    public function getByDates(\DateTimeInterface $start, \DateTimeInterface $end): Collection
+    {
+        return Day::query()
+            ->whereDate(Day::FIELD_DATE, '>=', $start)
+            ->whereDate(Day::FIELD_DATE, '<=', $end)
+            ->get();
     }
 }
