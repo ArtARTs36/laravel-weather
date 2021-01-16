@@ -15,12 +15,25 @@ final class DayServiceTest extends TestCase
     {
         $service = $this->app->make(DayService::class);
 
+        /** @var Day $oneDay */
         $oneDay = factory(Day::class)->create([Day::FIELD_TEMPERATURE => 40]);
+        /** @var Day $twoDay */
         $twoDay = factory(Day::class)->create([Day::FIELD_TEMPERATURE => 30]);
 
         $average = $service->bringAverageDailyTemperature([$oneDay, $twoDay]);
 
         self::assertEquals(35, $average);
+
+        // Empty array
+
+        self::assertEquals(0, $service->bringAverageDailyTemperature([]));
+
+        // Sum = 0
+
+        $oneDay->temperature = -10;
+        $twoDay->temperature = 10;
+
+        self::assertEquals(0, $service->bringAverageDailyTemperature([$oneDay, $twoDay]));
     }
 
     /**

@@ -23,15 +23,15 @@ class DayService
             return 0;
         }
 
-        $summ = array_sum(array_map(function (Day $day) {
+        $sum = array_sum(array_map(function (Day $day) {
             return $day->temperature;
         }, $days));
 
-        if ($summ === 0) {
+        if ($sum === 0) {
             return 0;
         }
 
-        return $summ / count($days);
+        return $sum / count($days);
     }
 
     public function bringAverageDailyTemperatureByDates(\DateTimeInterface $start, \DateTimeInterface $end): float
