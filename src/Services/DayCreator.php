@@ -27,7 +27,7 @@ class DayCreator
                 Day::FIELD_CLOUDY => $day->cloudy,
                 Day::FIELD_WIND => $day->wind,
                 Day::FIELD_PRESSURE => $day->pressure,
-                Day::FIELD_TEMPERATURE => $day->pressure,
+                Day::FIELD_TEMPERATURE => $day->temperature,
             ];
         }, $values));
     }
