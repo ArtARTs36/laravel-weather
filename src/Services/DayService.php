@@ -27,6 +27,10 @@ class DayService
             return $day->temperature;
         }, $days));
 
+        if ($summ === 0) {
+            return 0;
+        }
+
         return $summ / count($days);
     }
 
