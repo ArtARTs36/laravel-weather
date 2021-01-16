@@ -35,7 +35,7 @@ class WeatherFetcher
 
         $driver = $this->driverFactory->byDate($date);
 
-        $days = $driver->getOnMonth($date, $this->placeGetter->fromConfig($driver));
+        $days = $driver->getOnMonth($date, $this->placeGetter->fromConfig());
 
         return $this->creator->createFromExternal($days);
     }

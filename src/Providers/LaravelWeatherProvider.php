@@ -4,8 +4,6 @@ namespace ArtARTs36\LaravelWeather\Providers;
 
 use ArtARTs36\LaravelWeather\Console\Commands\FetchWeatherCommand;
 use ArtARTs36\LaravelWeather\Services\WeatherFetcher;
-use ArtARTs36\WeatherArchive\DriverFactory;
-use ArtARTs36\WeatherArchive\Entities\Place;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelWeatherProvider extends ServiceProvider

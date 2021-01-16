@@ -18,9 +18,9 @@ class CreateWeatherDaysTable extends Migration
 
             $table->date('date');
             $table->integer('temperature');
-            $table->integer('pressure');
-            $table->integer('wind');
-            $table->string('cloudy');
+            $table->integer('pressure')->nullable();
+            $table->integer('wind')->nullable();
+            $table->string('cloudy')->nullable();
 
             $table->timestamps();
         });
