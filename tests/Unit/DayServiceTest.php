@@ -3,12 +3,14 @@
 namespace ArtARTs36\LaravelWeather\Tests\Unit;
 
 use ArtARTs36\LaravelWeather\Models\Day;
-use ArtARTs36\LaravelWeather\Repositories\DayRepository;
 use ArtARTs36\LaravelWeather\Services\DayService;
 use ArtARTs36\LaravelWeather\Tests\TestCase;
 
 final class DayServiceTest extends TestCase
 {
+    /**
+     * @covers \ArtARTs36\LaravelWeather\Services\DayService::bringAverageDailyTemperature
+     */
     public function testBringAverageDailyTemperature(): void
     {
         $service = $this->app->make(DayService::class);
@@ -21,6 +23,9 @@ final class DayServiceTest extends TestCase
         self::assertEquals(35, $average);
     }
 
+    /**
+     * @covers \ArtARTs36\LaravelWeather\Services\DayService::bringAverageDailyTemperatureByDates
+     */
     public function testBringAverageDailyTemperatureByDates(): void
     {
         $service = $this->app->make(DayService::class);
